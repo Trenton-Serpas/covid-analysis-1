@@ -20,22 +20,13 @@ class practice_test extends AnyFlatSpec {
   import spark.implicits._
 
   //Create data resources
-  InfectionRates.createTodayTable(spark)
 
-  var allData = spark.sql("SELECT * FROM today")
+  "createTodayTable" should "return valid json" in {
+    InfectionRates.createTodayTable(spark)
 
-  "createTodayTable" should "contain Region and country" in {   // only used if our data is divided into regions/countries
+    var allData = spark.sql("SELECT * FROM today")
 
     assert(allData.columns.contains("Region"))
     assert(allData.columns.contains("country"))
-  }
-
-  "createTodayTable" should "contain age group" in{
-    assert(allData.columns.contains("age group")) // replace "age group" with whatever column name
-  }
-
-  "createTodayTable" should "contain valid today cases" in {
-    assert(allData.columns.contains())
-    //test for no null values
   }
 }

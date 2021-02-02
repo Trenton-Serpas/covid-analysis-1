@@ -130,7 +130,7 @@ object InfectionRates {
         createJsonFile( "yesterday.json", "https://disease.sh/v3/covid-19/countries?yesterday=true&allowNull=false" )
 
         // Creates the tables in temp view
-        createTodayTable( spark )
+        
         createYesterdayTable( spark )
 
         // Percentage of Regions with increasing COVID-19 Infection rate
