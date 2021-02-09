@@ -108,7 +108,7 @@ fabric.properties
 .idea/codestream.xml
 
 ### Metals ###
-.metals/
+**/.metals/
 project/**/metals.sbt
 
 ### SBT ###
@@ -233,3 +233,6 @@ spark-warehouse/
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/metals,scala,spark,sbt,bloop,intellij,vscode
+.metals/metals.h2.db
+.metals/metals.lock.db
+.metals/metals.log
