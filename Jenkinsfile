@@ -8,108 +8,177 @@ pipeline {
 
     // Define our pipeline into stages
     stages {
-
-        //Infection-mortality group
-        //CovidLiveUpdateApp Compile and Test
-        stage("Compile infection-mortality CovidLiveUpdateApp") {
+        stage("Compile Stockmarket") {
             steps {
-                echo "Compile CovidLiveUpdateApp"
+                echo "Compile stockmarket"
 
                 sh '''
-                    cd infection-mortality/CovidLiveUpdateApp
+                    cd stockmarket
                     sbt compile
                     cd ../..
                 '''
             }
         }
+        stage("Test Stockmarket") {
+            steps {
+                echo "Test stockmarket"
+
+                sh '''
+                    cd stockmarket
+                    sbt test
+                    cd ../..
+                '''
+            }
+        }
+        stage("Package Stockmarket") {
+            steps {
+                echo "Test stockmarket"
+
+                sh '''
+                    cd stockmarket
+                    sbt package
+                    cd ../..
+                '''
+            }
+        }
+
+
+
+        stage("Compile Stockmarket") {
+            steps {
+                echo "Compile stockmarket-data"
+
+                sh '''
+                    cd stockmarket
+                    sbt compile
+                    cd ../..
+                '''
+            }
+        }
+        stage("Test Stockmarket") {
+            steps {
+                echo "Test stockmarket-data"
+
+                sh '''
+                    cd stockmarket-data
+                    sbt test
+                    cd ../..
+                '''
+            }
+        }
+        stage("Package Stockmarket") {
+            steps {
+                echo "Test stockmarket-data"
+
+                sh '''
+                    cd stockmarket-data
+                    sbt package
+                    cd ../..
+                '''
+            }
+        }
+
+        // //Infection-mortality group
+        // //CovidLiveUpdateApp Compile and Test
+        // stage("Compile infection-mortality CovidLiveUpdateApp") {
+        //     steps {
+        //         echo "Compile CovidLiveUpdateApp"
+
+        //         sh '''
+        //             cd infection-mortality/CovidLiveUpdateApp
+        //             sbt compile
+        //             cd ../..
+        //         '''
+        //     }
+        // }
         
-        stage("Test infection-mortality CovidLiveUpdateApp") {
-            steps {
-                echo "Test CovidLiveUpdateApp"
+        // stage("Test infection-mortality CovidLiveUpdateApp") {
+        //     steps {
+        //         echo "Test CovidLiveUpdateApp"
 
-                sh '''
-                    cd infection-mortality/CovidLiveUpdateApp
-                    sbt test
-                    cd ../..
-                '''
-            }
-        }
+        //         sh '''
+        //             cd infection-mortality/CovidLiveUpdateApp
+        //             sbt test
+        //             cd ../..
+        //         '''
+        //     }
+        // }
 
-        //RegionalInfectionRates Compile and Test
-        stage("Compile infection-mortality/RegionalInfectionRates") {
-            steps {
-                echo "Compile RegionalInfectionRates"
+        // //RegionalInfectionRates Compile and Test
+        // stage("Compile infection-mortality/RegionalInfectionRates") {
+        //     steps {
+        //         echo "Compile RegionalInfectionRates"
 
-                sh '''
-                    cd infection-mortality/RegionalInfectionRates
-                    sbt compile
-                    cd ../..
-                '''
-            }
-        }
+        //         sh '''
+        //             cd infection-mortality/RegionalInfectionRates
+        //             sbt compile
+        //             cd ../..
+        //         '''
+        //     }
+        // }
 
-        stage("Test infection-mortality/RegionalInfectionRates") {
-            steps {
-                echo "Test RegionalInfectionRates"
+        // stage("Test infection-mortality/RegionalInfectionRates") {
+        //     steps {
+        //         echo "Test RegionalInfectionRates"
 
-                sh '''
-                    cd infection-mortality/RegionalInfectionRates
-                    sbt test
-                    cd ../..
-                '''
-            }
-        }
+        //         sh '''
+        //             cd infection-mortality/RegionalInfectionRates
+        //             sbt test
+        //             cd ../..
+        //         '''
+        //     }
+        // }
 
-        //twitter-covid Group
-        //age-spikes-discussion Compile and Test
-        stage("Compile twitter-covid age-spikes-discussion") {
-            steps {
-                echo "Compile age-spikes-discussion"
+        // //twitter-covid Group
+        // //age-spikes-discussion Compile and Test
+        // stage("Compile twitter-covid age-spikes-discussion") {
+        //     steps {
+        //         echo "Compile age-spikes-discussion"
 
-                sh '''
-                    cd twitter-covid/age-spikes-discussion
-                    sbt compile
-                    cd ../..
-                '''
-            }
-        }
+        //         sh '''
+        //             cd twitter-covid/age-spikes-discussion
+        //             sbt compile
+        //             cd ../..
+        //         '''
+        //     }
+        // }
 
-        stage("Test twitter-covid age-spikes-discussion") {
-            steps {
-                echo "Test age-spikes-discussion"
+        // stage("Test twitter-covid age-spikes-discussion") {
+        //     steps {
+        //         echo "Test age-spikes-discussion"
 
-                sh '''
-                    cd twitter-covid/age-spikes-discussion
-                    sbt test
-                    cd ../..
-                '''
-            }
-        }
+        //         sh '''
+        //             cd twitter-covid/age-spikes-discussion
+        //             sbt test
+        //             cd ../..
+        //         '''
+        //     }
+        // }
 
-        //HashtagByRegion Compile and Test
-        stage("Compile twitter-covid HashtagByRegion") {
-            steps {
-                echo "Compile HashtagByRegion"
+        // //HashtagByRegion Compile and Test
+        // stage("Compile twitter-covid HashtagByRegion") {
+        //     steps {
+        //         echo "Compile HashtagByRegion"
 
-                sh '''
-                    cd twitter-covid/HashtagByRegion
-                    sbt compile
-                    cd ../..
-                '''
-            }
-        }
+        //         sh '''
+        //             cd twitter-covid/HashtagByRegion
+        //             sbt compile
+        //             cd ../..
+        //         '''
+        //     }
+        // }
 
-        stage("Test twitter-covid HashtagByRegion") {
-            steps {
-                echo "Test HashtagByRegion"
+        // stage("Test twitter-covid HashtagByRegion") {
+        //     steps {
+        //         echo "Test HashtagByRegion"
 
-                sh '''
-                    cd twitter-covid/HashtagByRegion
-                    sbt test
-                    cd ../..
-                '''
-            }
-        }
+        //         sh '''
+        //             cd twitter-covid/HashtagByRegion
+        //             sbt test
+        //             cd ../..
+        //         '''
+        //     }
+        // }
 
         //RelatedHashtags Compile and Test
         // stage("Compile twitter-covid RelatedHashtags") {
